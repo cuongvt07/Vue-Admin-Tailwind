@@ -1,11 +1,26 @@
 import { createRouter, createWebHistory } from "vue-router";
 
-import dashboard from "../pages/master/dashboard.vue";
+import Layout from '@/components/layout.vue';
+import Dashboard from "../pages/master/dashboard.vue";
+import Product from "../pages/master/product.vue";
+
 const routes = [
     {
-        name: "Dashboard",
-        path: "/",
-        component: dashboard
+      path: '/',
+      redirect: '/dashboard',
+      component: Layout,
+      children: [
+        {
+          path: 'dashboard',
+          name: 'Dashboard',
+          component: Dashboard
+        },
+        {
+          path: 'product',
+          name: 'Product',
+          component: Product
+        }
+      ]
     }
 ];
 
