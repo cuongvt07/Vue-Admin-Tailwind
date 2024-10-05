@@ -25,3 +25,4 @@ pnpm-debug.log*
 jsconfig.json
 package-lock.json
 package.json
+.gitignore
