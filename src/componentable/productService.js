@@ -25,7 +25,6 @@ export const ProductService = {
                 inventoryStatus: 'INSTOCK',
                 rating: 4
             },
-            // Add other products here...
         ];
     },
 
@@ -52,10 +51,8 @@ export const ProductService = {
                         customer: 'David James',
                         status: 'PENDING'
                     },
-                    // Add other orders here...
                 ]
             },
-            // Add more products with orders...
         ];
     },
 
