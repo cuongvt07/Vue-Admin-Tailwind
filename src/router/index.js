@@ -3,34 +3,47 @@ import { createRouter, createWebHistory } from "vue-router";
 import Layout from '@/components/layout.vue';
 import Dashboard from "../pages/master/dashboard.vue";
 import Product from "../pages/master/product.vue";
+import Login from "../pages/master/login.vue";
 
 const routes = [
-    {
-      path: '/',
-      redirect: '/dashboard',
-      component: Layout,
-      children: [
-        {
-          path: 'dashboard',
-          name: 'Dashboard',
-          component: Dashboard
-        },
-        {
-          path: 'product',
-          name: 'Product',
-          component: Product
-        }
-      ]
-    }
+  {
+    path: '/login',
+    name: 'Login',
+    component: Login
+  },
+  {
+    path: '/',
+    redirect: '/dashboard',
+    component: Layout,
+    children: [
+      {
+        path: 'dashboard',
+        name: 'Dashboard',
+        component: Dashboard
+      },
+      {
+        path: 'product',
+        name: 'Product',
+        component: Product
+      }
+    ]
+  }
 ];
 
-const router = Router();
-export default router;
+const router = createRouter({
+  history: createWebHistory(),
+  routes,
+});
 
-function Router() {
-    const router = new createRouter({
-        history: createWebHistory(),
-        routes,
-    });
-    return router;
-}
+router.beforeEach((to, from, next) => {
+  const token = localStorage.getItem('token');
+  console.log(to);
+
+  if (!token && to.name !== 'Login') {
+    next();
+  } else {
+    next();
+  }
+});
+
+export default router;
